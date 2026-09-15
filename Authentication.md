@@ -1,5 +1,11 @@
 ## Authentication
 
+#### Install JWT token
+```bash
+npm install @nestjs/jwt
+```
+---
+
 #### Generate koro
 ```bash
 nest g module auth
