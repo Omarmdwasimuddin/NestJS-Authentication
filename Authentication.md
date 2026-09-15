@@ -1,6 +1,6 @@
 ## Authentication
 
-#### 
+#### Generate koro
 ```bash
 nest g module auth
 ```
