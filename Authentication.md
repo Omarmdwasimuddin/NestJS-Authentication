@@ -10,4 +10,10 @@ nest g controller auth
 ```bash
 nest g service auth
 ```
+```bash
+nest g module users
+```
+```bash
+nest g service users
+```
 ---
