@@ -68,25 +68,21 @@ export class UsersModule {}
 #### `auth.service.ts`
 ```bash
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service.js';
 
 @Injectable()
 export class AuthService {
-  constructor(
-    private usersService: UsersService,
-    private jwtService: JwtService,
-  ) {}
+  constructor(private readonly usersService: UsersService) {}
 
-  async signIn(username: string, pass: string) {
+  async signIn(username: string, pass: string): Promise<any> {
     const user = await this.usersService.findOne(username);
     if (user?.password !== pass) {
       throw new UnauthorizedException();
     }
-    const payload = { username: user.username, sub: user.userId };
-    return {
-      access_token: await this.jwtService.signAsync(payload),
-    };
+    const { password, ...result } = user;
+    // TODO: Generate a JWT and return it here
+    // instead of the user object
+    return result;
   }
 }
 ```
@@ -106,6 +102,25 @@ import { UsersModule } from '../users/users.module.js';
   controllers: [AuthController],
 })
 export class AuthModule {}
+```
+---
+
+
+#### `auth.controller.ts`
+```bash
+import { Body, Controller, Post, HttpCode, HttpStatus } from '@nestjs/common';
+import { AuthService } from './auth.service.js';
+
+@Controller('auth')
+export class AuthController {
+  constructor(private readonly authService: AuthService) {}
+
+  @HttpCode(HttpStatus.OK)
+  @Post('login')
+  signIn(@Body() signInDto: Record<string, any>) {
+    return this.authService.signIn(signInDto.username, signInDto.password);
+  }
+}
 ```
 ---
 
