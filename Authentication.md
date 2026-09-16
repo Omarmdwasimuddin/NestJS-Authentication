@@ -212,3 +212,7 @@ export class AuthController {
 }
 ```
 ---
+
+>## OUTPUT
+
+---
