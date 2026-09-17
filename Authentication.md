@@ -106,7 +106,7 @@ export const jwtConstants = {
 ```
 ---
 
->#### Create custom decorators
+>#### Create custom decorators ---> auth/decorators/public.decorator.ts
 #### `public.decorator.ts`
 ```bash
 import { SetMetadata } from '@nestjs/common';
