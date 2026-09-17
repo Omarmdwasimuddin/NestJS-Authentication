@@ -244,5 +244,6 @@ export class AuthController {
 ---
 
 >## OUTPUT
+<img width="1309" height="474" alt="image" src="https://github.com/user-attachments/assets/fa583290-d5a5-4d9b-b591-0fcf3cdaa223" />
 
 ---
