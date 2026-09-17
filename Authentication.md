@@ -17,7 +17,7 @@ nest g controller auth
 nest g service auth
 ```
 ```bash
-nest g guard auth/auth
+nest g guard auth
 ```
 ```bash
 nest g module users
